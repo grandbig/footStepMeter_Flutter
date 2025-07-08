@@ -9,20 +9,27 @@ The project follows the standard Flutter project structure and includes platform
 ## Development Commands
 
 ### Code Generation
-- `dart run build_runner build` - Generate code for Freezed models, Riverpod providers, and JSON serialization
-- `dart run build_runner build --delete-conflicting-outputs` - Force regenerate all generated files
-- `dart run build_runner watch` - Watch for changes and auto-generate code
+- `make generate` - Generate code for Freezed models, Riverpod providers, and JSON serialization
+- `make watch` - Watch for changes and auto-generate code
 
-### Analysis and Testing
-- `flutter analyze` - Run static analysis with linting
+### Testing and Coverage
 - `flutter test` - Run unit and widget tests
 - `flutter test test/widget_test.dart` - Run specific test file
-- `flutter doctor` - Check if Flutter is available
+- `make test-coverage` - Run tests with coverage report (excludes generated files)
+- `make test-coverage-html` - Generate HTML coverage report and open in browser
 
 ### Build and Run
 - `flutter run` - Run app in debug mode
-- `flutter build apk` - Build Android APK
+- `flutter build apk --debug` - Build Android APK (debug)
+- `flutter build apk --release` - Build Android APK (release)
 - `flutter build ios` - Build iOS app
+
+### Setup and Maintenance
+- `make deps` - Install dependencies
+- `flutter clean` - Clean build cache
+- `flutter doctor` - Check Flutter environment
+- `flutter analyze` - Run static analysis with linting
+- `make help` - Show all available make commands
 
 ## Architecture Overview
 This Flutter app follows Clean Architecture with feature-based organization:
@@ -51,12 +58,14 @@ The project uses code generation extensively:
 - `*.g.dart` - JSON serialization
 - `*.freezed.dart` - Freezed immutable classes
 - Provider files use `part` declarations for generated code
+- `*.realm.dart` - Realm classes
 
 ## Test Overview
 In this project, we will follow TDD (Test-Driven Development) as advocated by t-wada.
 The types of tests to be implemented are unit tests and widget tests.
 Our goal is to achieve 100% code coverage as much as possible.
-For widget tests, please focus on testing layout structure rather than fine details such as styles or font sizes.
+Unit tests should not include tests for automatically generated code such as *.freezed.dart, *.g.dart, *.realm.dart.
+Also, for widget tests, please focus on testing layout structure rather than fine details such as styles or font sizes.
 
 ## Environment Setup
 - Create `.env` file in root
