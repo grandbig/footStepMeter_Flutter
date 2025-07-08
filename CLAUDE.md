@@ -12,27 +12,24 @@ The project follows the standard Flutter project structure and includes platform
 - `make generate` - Generate code for Freezed models, Riverpod providers, and JSON serialization
 - `make watch` - Watch for changes and auto-generate code
 
-### Analysis and Testing
-- `make analyze` - Run static analysis with linting
-- `make test` - Run unit and widget tests
+### Testing and Coverage
+- `flutter test` - Run unit and widget tests
 - `flutter test test/widget_test.dart` - Run specific test file
 - `make test-coverage` - Run tests with coverage report (excludes generated files)
 - `make test-coverage-html` - Generate HTML coverage report and open in browser
-- `make check` - Run analysis and tests (CI用)
-- `flutter doctor` - Check if Flutter is available
 
 ### Build and Run
-- `make run` - Run app in debug mode
-- `make build-debug` - Build Android APK (debug)
-- `make build-release` - Build Android APK (release)
-- `make build-ios` - Build iOS app
+- `flutter run` - Run app in debug mode
+- `flutter build apk --debug` - Build Android APK (debug)
+- `flutter build apk --release` - Build Android APK (release)
+- `flutter build ios` - Build iOS app
 
 ### Setup and Maintenance
-- `make setup` - Initial project setup (deps + generate)
 - `make deps` - Install dependencies
-- `make clean` - Clean build cache
-- `make doctor` - Check Flutter environment
-- `make help` - Show all available commands
+- `flutter clean` - Clean build cache
+- `flutter doctor` - Check Flutter environment
+- `flutter analyze` - Run static analysis with linting
+- `make help` - Show all available make commands
 
 ## Architecture Overview
 This Flutter app follows Clean Architecture with feature-based organization:
