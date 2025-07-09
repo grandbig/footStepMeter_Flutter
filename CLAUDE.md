@@ -75,6 +75,8 @@ Also, for widget tests, please focus on testing layout structure rather than fin
 - **Data Layer**: 
   - Test repository implementations
   - Test data models (excluding auto-generated code)
+  - Do NOT test datasource implementations that heavily depend on external services (e.g., GPS, network APIs) as they require integration testing
+  - Use dependency injection to make datasource implementations testable by injecting mock dependencies
 - **Use Case Layer**: 
   - Test business logic and use case implementations
 - **Presentation Layer**: 
