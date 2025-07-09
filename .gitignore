@@ -48,3 +48,9 @@ app.*.map.json
 coverage/
 .claude/
 .env
+
+# Realm database files
+*.realm
+*.realm.lock
+*.realm.management/
+*.realm.note
