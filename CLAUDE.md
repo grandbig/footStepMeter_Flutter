@@ -80,6 +80,13 @@ Also, for widget tests, please focus on testing layout structure rather than fin
 - **Presentation Layer**: 
   - Use widget tests for UI components
 
+### Unit Test Quality
+- Pure Unit Tests: Test each method's single responsibility
+- Fast execution: Minimal test code
+- Clear intent: Only correct data conversion
+- Maintainability: Test only essential functionality
+- Value: Focus on the app's unique logic
+
 ## Environment Setup
 - Create `.env` file in root
 - Run code generation after model/provider changes
