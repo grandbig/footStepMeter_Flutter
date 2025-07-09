@@ -65,7 +65,20 @@ In this project, we will follow TDD (Test-Driven Development) as advocated by t-
 The types of tests to be implemented are unit tests and widget tests.
 Our goal is to achieve 100% code coverage as much as possible.
 Unit tests should not include tests for automatically generated code such as *.freezed.dart, *.g.dart, *.realm.dart.
+Unit tests should not include tests for interface definitions (abstract interface class) as they contain no implementation to test.
 Also, for widget tests, please focus on testing layout structure rather than fine details such as styles or font sizes.
+
+### Test Strategy by Layer
+- **Domain Layer**: 
+  - Test entities with business logic (methods like `isValidLocation()`, `isEmpty()`)
+  - Do NOT test interface definitions (`abstract interface class`)
+- **Data Layer**: 
+  - Test repository implementations
+  - Test data models (excluding auto-generated code)
+- **Use Case Layer**: 
+  - Test business logic and use case implementations
+- **Presentation Layer**: 
+  - Use widget tests for UI components
 
 ## Environment Setup
 - Create `.env` file in root
