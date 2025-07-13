@@ -1,0 +1,23 @@
+{
+  "@@locale": "ja",
+  "locationErrorPermissionDenied": "位置情報の使用許可がありません",
+  "@locationErrorPermissionDenied": {
+    "description": "位置情報の許可が拒否された時のエラーメッセージ"
+  },
+  "locationErrorServiceDisabled": "位置情報サービスが無効です",
+  "@locationErrorServiceDisabled": {
+    "description": "位置情報サービスが無効な時のエラーメッセージ"
+  },
+  "locationErrorLocationUnavailable": "現在位置を取得できませんでした",
+  "@locationErrorLocationUnavailable": {
+    "description": "位置情報が取得できない時のエラーメッセージ"
+  },
+  "locationErrorTrackingFailed": "位置情報の追跡を開始できませんでした",
+  "@locationErrorTrackingFailed": {
+    "description": "位置情報の追跡開始に失敗した時のエラーメッセージ"
+  },
+  "locationErrorTimeout": "位置情報の取得がタイムアウトしました",
+  "@locationErrorTimeout": {
+    "description": "位置情報の取得がタイムアウトした時のエラーメッセージ"
+  }
+}

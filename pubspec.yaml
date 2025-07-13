@@ -52,6 +52,11 @@ dependencies:
   # Environment variables
   flutter_dotenv: ^5.1.0
 
+  # Internationalization
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
   # Location services
   geolocator: ^10.1.0
 
@@ -87,11 +92,15 @@ dev_dependencies:
   # Testing
   mockito: ^5.4.4
 
+  # Asset and localization generation
+  flutter_gen: ^5.4.0
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -127,3 +136,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# flutter_gen configuration
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+  integrations:
+    flutter_localizations: true

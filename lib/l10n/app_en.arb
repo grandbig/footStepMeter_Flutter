@@ -1,0 +1,23 @@
+{
+  "@@locale": "en",
+  "locationErrorPermissionDenied": "Location permission is not granted",
+  "@locationErrorPermissionDenied": {
+    "description": "Error message when location permission is denied"
+  },
+  "locationErrorServiceDisabled": "Location service is disabled",
+  "@locationErrorServiceDisabled": {
+    "description": "Error message when location service is disabled"
+  },
+  "locationErrorLocationUnavailable": "Current location could not be obtained",
+  "@locationErrorLocationUnavailable": {
+    "description": "Error message when location is unavailable"
+  },
+  "locationErrorTrackingFailed": "Failed to start location tracking",
+  "@locationErrorTrackingFailed": {
+    "description": "Error message when location tracking fails to start"
+  },
+  "locationErrorTimeout": "Location request timed out",
+  "@locationErrorTimeout": {
+    "description": "Error message when location request times out"
+  }
+}
