@@ -23,10 +23,11 @@ test-coverage: ## テストを実行してカバレッジレポートを生成�
 		"**/*.g.dart" \
 		"**/*.freezed.dart" \
 		"**/*.realm.dart" \
+		"**/l10n/generated/**" \
 		-o coverage/lcov_filtered.info \
 		--ignore-errors unused
 	@echo "✅ Coverage report generated at coverage/lcov_filtered.info"
-	@echo "🧹 Generated files (.g.dart, .freezed.dart, .realm.dart) have been excluded from coverage"
+	@echo "🧹 Generated files (.g.dart, .freezed.dart, .realm.dart, l10n/generated/) have been excluded from coverage"
 
 .PHONY: test-coverage-html
 test-coverage-html: test-coverage ## HTMLカバレッジレポートを生成してブラウザで開きます
