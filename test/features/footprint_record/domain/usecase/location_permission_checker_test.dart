@@ -4,7 +4,6 @@ import 'package:mockito/annotations.dart';
 import 'package:foot_step_meter/features/footprint_record/domain/repository/location_repository.dart';
 import 'package:foot_step_meter/features/footprint_record/domain/usecase/location_permission_checker.dart';
 import 'package:foot_step_meter/features/footprint_record/domain/error/location_error.dart';
-import 'package:foot_step_meter/core/result.dart';
 
 import 'location_permission_checker_test.mocks.dart';
 

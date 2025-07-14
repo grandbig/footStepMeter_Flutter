@@ -5,6 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 This is a Flutter mobile application project called "foot_step_meter", which is a pedometer app.
 The project follows the standard Flutter project structure and includes platform-specific code for both iOS and Android.
+This project
+converts the following GitHub Repository, which is implemented in Swift, into Flutter:
+https://github.com/grandbig/footStepMeter/tree/master/footStepMeter
 
 ## Development Commands
 
