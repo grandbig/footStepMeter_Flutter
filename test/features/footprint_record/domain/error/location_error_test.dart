@@ -14,11 +14,13 @@ void main() {
           LocationError.locationUnavailable,
           LocationError.trackingFailed,
           LocationError.timeout,
+          LocationError.alreadyRecording,
+          LocationError.notRecording,
         ]);
       });
 
       test('enum値の数が期待値と一致する', () {
-        expect(LocationError.values.length, 5);
+        expect(LocationError.values.length, 7);
       });
     });
 
@@ -41,6 +43,14 @@ void main() {
 
       test('timeoutは再試行可能', () {
         expect(LocationError.timeout.isRetryable, true);
+      });
+
+      test('alreadyRecordingは再試行不可', () {
+        expect(LocationError.alreadyRecording.isRetryable, false);
+      });
+
+      test('notRecordingは再試行不可', () {
+        expect(LocationError.notRecording.isRetryable, false);
       });
     });
 
@@ -101,6 +111,22 @@ void main() {
         expect(message, '位置情報の取得がタイムアウトしました');
       });
 
+      testWidgets('alreadyRecordingが正しいメッセージを返す（日本語）', (tester) async {
+        await tester.pumpWidget(app);
+        final context = tester.element(find.byType(Scaffold));
+
+        final message = LocationError.alreadyRecording.getDescription(context);
+        expect(message, '既にルート記録中です');
+      });
+
+      testWidgets('notRecordingが正しいメッセージを返す（日本語）', (tester) async {
+        await tester.pumpWidget(app);
+        final context = tester.element(find.byType(Scaffold));
+
+        final message = LocationError.notRecording.getDescription(context);
+        expect(message, 'ルート記録を開始していません');
+      });
+
       group('英語ロケール', () {
         late Widget appEn;
 
@@ -156,6 +182,22 @@ void main() {
 
           final message = LocationError.timeout.getDescription(context);
           expect(message, 'Location request timed out');
+        });
+
+        testWidgets('alreadyRecordingが正しいメッセージを返す（英語）', (tester) async {
+          await tester.pumpWidget(appEn);
+          final context = tester.element(find.byType(Scaffold));
+
+          final message = LocationError.alreadyRecording.getDescription(context);
+          expect(message, 'Route recording is already in progress');
+        });
+
+        testWidgets('notRecordingが正しいメッセージを返す（英語）', (tester) async {
+          await tester.pumpWidget(appEn);
+          final context = tester.element(find.byType(Scaffold));
+
+          final message = LocationError.notRecording.getDescription(context);
+          expect(message, 'Route recording has not been started');
         });
       });
     });
