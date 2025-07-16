@@ -19,5 +19,13 @@
   "locationErrorTimeout": "Location request timed out",
   "@locationErrorTimeout": {
     "description": "Error message when location request times out"
+  },
+  "locationErrorAlreadyRecording": "Route recording is already in progress",
+  "@locationErrorAlreadyRecording": {
+    "description": "Error message when trying to start recording while already recording"
+  },
+  "locationErrorNotRecording": "Route recording has not been started",
+  "@locationErrorNotRecording": {
+    "description": "Error message when trying to stop recording without starting"
   }
 }

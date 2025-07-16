@@ -24,4 +24,12 @@ class L10nEn extends L10n {
 
   @override
   String get locationErrorTimeout => 'Location request timed out';
+
+  @override
+  String get locationErrorAlreadyRecording =>
+      'Route recording is already in progress';
+
+  @override
+  String get locationErrorNotRecording =>
+      'Route recording has not been started';
 }

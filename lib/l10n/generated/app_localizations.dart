@@ -126,6 +126,18 @@ abstract class L10n {
   /// In ja, this message translates to:
   /// **'位置情報の取得がタイムアウトしました'**
   String get locationErrorTimeout;
+
+  /// 既にルート記録中で新しい記録を開始できない時のエラーメッセージ
+  ///
+  /// In ja, this message translates to:
+  /// **'既にルート記録中です'**
+  String get locationErrorAlreadyRecording;
+
+  /// ルート記録を停止しようとしたが記録が開始されていない時のエラーメッセージ
+  ///
+  /// In ja, this message translates to:
+  /// **'ルート記録を開始していません'**
+  String get locationErrorNotRecording;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

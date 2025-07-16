@@ -2,7 +2,7 @@ import '../entity/footprint_record.dart';
 import '../repository/location_repository.dart';
 import '../error/location_error.dart';
 import '../../../../core/result.dart';
-import 'location_permission_checker.dart';
+import '../service/location_permission_service.dart';
 
 /// 位置情報の追跡を開始するユースケース
 ///
@@ -11,9 +11,9 @@ import 'location_permission_checker.dart';
 /// 権限が拒否されている場合は適切なエラーを返します。
 class StartLocationTrackingUseCase {
   final LocationRepository _locationRepository;
-  final LocationPermissionChecker _permissionChecker;
+  final LocationPermissionService _permissionService;
 
-  StartLocationTrackingUseCase(this._locationRepository, this._permissionChecker);
+  StartLocationTrackingUseCase(this._locationRepository, this._permissionService);
 
   /// 位置情報の追跡を開始します
   ///
@@ -24,7 +24,7 @@ class StartLocationTrackingUseCase {
   /// - 成功時: FootprintRecord のストリームを含む Result
   /// - 失敗時: LocationError を含む Result
   Future<Result<Stream<FootprintRecord>, LocationError>> execute() async {
-    final accessResult = await _permissionChecker.checkLocationAccess();
+    final accessResult = await _permissionService.checkLocationAccess();
     if (accessResult.isFailure) {
       return Result.failure(accessResult.error!);
     }

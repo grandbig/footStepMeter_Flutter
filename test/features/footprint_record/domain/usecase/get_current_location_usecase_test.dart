@@ -4,22 +4,22 @@ import 'package:mockito/annotations.dart';
 import 'package:foot_step_meter/features/footprint_record/domain/entity/footprint_record.dart';
 import 'package:foot_step_meter/features/footprint_record/domain/repository/location_repository.dart';
 import 'package:foot_step_meter/features/footprint_record/domain/usecase/get_current_location_usecase.dart';
-import 'package:foot_step_meter/features/footprint_record/domain/usecase/location_permission_checker.dart';
+import 'package:foot_step_meter/features/footprint_record/domain/service/location_permission_service.dart';
 import 'package:foot_step_meter/features/footprint_record/domain/error/location_error.dart';
 import 'package:foot_step_meter/core/result.dart';
 
 import 'get_current_location_usecase_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<LocationRepository>(), MockSpec<LocationPermissionChecker>()])
+@GenerateNiceMocks([MockSpec<LocationRepository>(), MockSpec<LocationPermissionService>()])
 void main() {
   late GetCurrentLocationUseCase useCase;
   late MockLocationRepository mockLocationRepository;
-  late MockLocationPermissionChecker mockPermissionChecker;
+  late MockLocationPermissionService mockPermissionService;
 
   setUp(() {
     mockLocationRepository = MockLocationRepository();
-    mockPermissionChecker = MockLocationPermissionChecker();
-    useCase = GetCurrentLocationUseCase(mockLocationRepository, mockPermissionChecker);
+    mockPermissionService = MockLocationPermissionService();
+    useCase = GetCurrentLocationUseCase(mockLocationRepository, mockPermissionService);
   });
 
   group('GetCurrentLocationUseCase', () {
@@ -35,7 +35,7 @@ void main() {
         timestamp: DateTime.now(),
       );
 
-      when(mockPermissionChecker.checkLocationAccess())
+      when(mockPermissionService.checkLocationAccess())
           .thenAnswer((_) async => const Result<void, LocationError>.success(null));
       when(mockLocationRepository.getCurrentLocation())
           .thenAnswer((_) async => expectedFootprint);
@@ -44,24 +44,24 @@ void main() {
 
       expect(result.isSuccess, true);
       expect(result.data, expectedFootprint);
-      verify(mockPermissionChecker.checkLocationAccess()).called(1);
+      verify(mockPermissionService.checkLocationAccess()).called(1);
       verify(mockLocationRepository.getCurrentLocation()).called(1);
     });
 
     test('権限がない場合、エラーを返す', () async {
-      when(mockPermissionChecker.checkLocationAccess())
+      when(mockPermissionService.checkLocationAccess())
           .thenAnswer((_) async => const Result<void, LocationError>.failure(LocationError.permissionDenied));
 
       final result = await useCase.execute();
 
       expect(result.isFailure, true);
       expect(result.error, LocationError.permissionDenied);
-      verify(mockPermissionChecker.checkLocationAccess()).called(1);
+      verify(mockPermissionService.checkLocationAccess()).called(1);
       verifyNever(mockLocationRepository.getCurrentLocation());
     });
 
     test('位置情報取得に失敗した場合、エラーを返す', () async {
-      when(mockPermissionChecker.checkLocationAccess())
+      when(mockPermissionService.checkLocationAccess())
           .thenAnswer((_) async => const Result<void, LocationError>.success(null));
       when(mockLocationRepository.getCurrentLocation())
           .thenAnswer((_) async => null);
@@ -70,7 +70,7 @@ void main() {
 
       expect(result.isFailure, true);
       expect(result.error, LocationError.locationUnavailable);
-      verify(mockPermissionChecker.checkLocationAccess()).called(1);
+      verify(mockPermissionService.checkLocationAccess()).called(1);
       verify(mockLocationRepository.getCurrentLocation()).called(1);
     });
   });
