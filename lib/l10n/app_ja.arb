@@ -19,5 +19,13 @@
   "locationErrorTimeout": "位置情報の取得がタイムアウトしました",
   "@locationErrorTimeout": {
     "description": "位置情報の取得がタイムアウトした時のエラーメッセージ"
+  },
+  "locationErrorAlreadyRecording": "既にルート記録中です",
+  "@locationErrorAlreadyRecording": {
+    "description": "既にルート記録中で新しい記録を開始できない時のエラーメッセージ"
+  },
+  "locationErrorNotRecording": "ルート記録を開始していません",
+  "@locationErrorNotRecording": {
+    "description": "ルート記録を停止しようとしたが記録が開始されていない時のエラーメッセージ"
   }
 }

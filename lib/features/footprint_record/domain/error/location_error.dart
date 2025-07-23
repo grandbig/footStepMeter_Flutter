@@ -30,7 +30,17 @@ enum LocationError {
   /// タイムアウトエラー
   /// 
   /// 位置情報の取得が指定時間内に完了しなかった状態
-  timeout;
+  timeout,
+  
+  /// 既にルート記録中
+  /// 
+  /// 既に別のルートの記録が進行中で、新しい記録を開始できない状態
+  alreadyRecording,
+  
+  /// ルート記録していない
+  /// 
+  /// ルート記録を停止しようとしたが、記録が開始されていない状態
+  notRecording;
   
   /// エラーの説明文を取得します
   /// 
@@ -49,6 +59,10 @@ enum LocationError {
         return l10n.locationErrorTrackingFailed;
       case LocationError.timeout:
         return l10n.locationErrorTimeout;
+      case LocationError.alreadyRecording:
+        return l10n.locationErrorAlreadyRecording;
+      case LocationError.notRecording:
+        return l10n.locationErrorNotRecording;
     }
   }
   
@@ -64,6 +78,9 @@ enum LocationError {
       case LocationError.trackingFailed:
       case LocationError.timeout:
         return true; // 再試行可能
+      case LocationError.alreadyRecording:
+      case LocationError.notRecording:
+        return false; // 状態変更が必要
     }
   }
 }

@@ -22,4 +22,10 @@ class L10nJa extends L10n {
 
   @override
   String get locationErrorTimeout => '位置情報の取得がタイムアウトしました';
+
+  @override
+  String get locationErrorAlreadyRecording => '既にルート記録中です';
+
+  @override
+  String get locationErrorNotRecording => 'ルート記録を開始していません';
 }

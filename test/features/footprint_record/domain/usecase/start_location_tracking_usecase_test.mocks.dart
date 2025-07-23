@@ -12,7 +12,7 @@ import 'package:foot_step_meter/features/footprint_record/domain/error/location_
     as _i7;
 import 'package:foot_step_meter/features/footprint_record/domain/repository/location_repository.dart'
     as _i3;
-import 'package:foot_step_meter/features/footprint_record/domain/usecase/location_permission_checker.dart'
+import 'package:foot_step_meter/features/footprint_record/domain/service/location_permission_service.dart'
     as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -107,11 +107,11 @@ class MockLocationRepository extends _i1.Mock
       ) as _i4.Future<bool>);
 }
 
-/// A class which mocks [LocationPermissionChecker].
+/// A class which mocks [LocationPermissionService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLocationPermissionChecker extends _i1.Mock
-    implements _i6.LocationPermissionChecker {
+class MockLocationPermissionService extends _i1.Mock
+    implements _i6.LocationPermissionService {
   @override
   _i4.Future<_i2.Result<void, _i7.LocationError>> checkLocationAccess() =>
       (super.noSuchMethod(

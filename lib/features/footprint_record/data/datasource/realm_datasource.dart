@@ -1,5 +1,4 @@
 import 'package:realm/realm.dart';
-import 'package:flutter/foundation.dart';
 import '../model/footprint_record_model.dart';
 import '../model/route_model.dart';
 import '../../domain/entity/footprint_record.dart';
